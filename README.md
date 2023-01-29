@@ -1,108 +1,304 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Job Connect API
+Job Connect API is the backend service used by the [Job Connect App](https://github.com/ssmi8/job_connect)
 
-Welcome ssmi8,
+## Table of Contents
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+## Development Goals
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+The goal of this API is to provide a backend sevice to all the Job Connect front end application to perform, create, read, update and delete operations vias the user interface.
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+## Agile Planning
 
-Another blue button should appear to click: _Open Browser_.
+This project was developed using agile methodologies by delivering small features in incremental sprints.  There were 3 sprints in total.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+All stories were laid out at the beginning of the project, as these were the key elements to implement.  Throughout the process some user stories were added as the project developed.
 
-A blue button should appear to click: _Make Public_,
+The Kanban board was created using github projects and can be located [here](https://github.com/users/ssmi8/projects/3).
 
-Another blue button should appear to click: _Open Browser_.
+## Epics
+### Set Up
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+This Epic covers all the initial setup of the Django application and Django REST Framework in order to begin coding the features.
 
-To log into the Heroku toolbelt CLI:
+### Posts
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+This Epic covers all API endpoint creation and database connections relating to the CRUD functionality of user posts. This includes like activity.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Comments
 
-------
+This Epic covers all API endpoint creation and database connections relating to the CRUD functionality of user comments in relation to posts.
 
-## Release History
+### Profiles
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+This Epic covers all API endpoint creation and database connections relating to the CRUD functionality of user created profiles. This includes following functionality.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Skills
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+This Epic covers all API endpoint creation and database connections relating to the CRUD functionality of user skill posts.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Jobs
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+This Epic covers all API endpoint creation and database connections relating to the CRUD functionality of user job posts.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## User Stories
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Setup
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- As a developer, I need to create the base project set up so that I can build out the features.
+- As a developer, I need to create the cloudinary bucket and create the connection to the project so static image can be uploaded.
+- As a user I can create a new account so that I can access all the features for signed up users.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Posts
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- As a user, I want to be able to be able to view, edit or delete a post
+- As a user, I want to be able to get a list of profiles
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Profiles
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+- As a developer, I want to create a new blank profile with default image, when a user is created.
+- As a user, I want to be able to get a list of profiles.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## API Endpoints
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+User Story:
 
-------
+As a developer, I need to create the base project set up so that I can build out the features.
 
-## FAQ about the uptime script
+Implementation:
 
-**Why have you added this script?**
+The base project was created and a virtual environment created with all neccessary packages installed and frozen into the requirements.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+The settings were also edited to hide any secret variables and set dev and production environments apart.
 
-**How will this affect me?**
+User Story:
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+As a developer, I need to create the google cloud bucket and create the connection to the project so that static images can be uploaded by users.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+Implementation:
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+A google cloud bucket was created and a service account created to allow image uploads via the service account. Create and read IAM roles were givent to the service account to ensure it had only the minimum required permissions.
 
-**So….?**
+User Story:
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+As a user I can create a new account so that I can access all the features for signed up users
 
-**Can I opt out?**
+Implementation:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+Django rest framework and dj_rest_auth were installed and added to the url patterns and site packages to make use of their built in authentication system.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+User Story:
 
-**Anything more?**
+As a developer, I want to create api views for artists so that they are available to the front end
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Implementation:
 
----
+Endpoint: /artists/
 
-Happy coding!
+Methods:
+
+POST - Used to create an artist
+GET - Used to retrieve a list of artists
+Endpoint: /artists/int:pk/
+
+Methods:
+
+GET - Used to view single artist profile
+PUT - Used to update an artist profile
+DELETE - Used to delete an artist profile
+User Story:
+
+As a developer, I want to create a contact model and API view so that users can contact the site owner with issues
+
+Implementation:
+
+Endpoint: /contacts/
+
+Methods:
+
+POST - Used to create contact request
+GET - Used to get a list of contact requests
+Endpoint: /contacts/int:pk/
+
+Methods:
+
+GET - Get a single contact request
+PUT - Used to update a single contact request
+DELETE - Used to delete a contact request
+User Story:
+
+As a user, I want to be able to view edit or delete a post
+
+As a user, I want to able to create a post and list posts
+
+Implementation:
+
+Endpoint: /posts/
+
+Methods:
+
+POST - Used to create post
+GET - Used to get a list of posts
+Endpoint: /posts/int:pk/
+
+Methods:
+
+GET - Get a single post
+PUT - Used to update a single post
+DELETE - Used to delete a post
+User Story:
+
+As a developer, I want to create a new blank profile with default image when a user is created.
+
+Implementation:
+
+In the profiles app, a signal was created in order to create a new user profile on signup.
+
+User Story:
+
+As a user, I want to able to get a list of profiles
+
+Implementation:
+
+Endpoint: /profiles/
+
+Methods:
+
+POST - Used to create post
+GET - Used to get a list of posts
+Endpoint: /profiles/int:pk/
+
+Methods:
+
+GET - Get a single profile
+PUT - Used to update a single profile
+DELETE - Used to delete a profile
+
+
+## Security
+
+A permissions class was added called IsOwnerOrReadOnly to ensure only users who create the content are able to edit or delete it.
+
+## Technologies used
+
+- Django
+    - Main framework used for application creation
+- Django REST Framework
+    - Framework used for creating API
+- Cloudinary Platform
+    - Used for static image hosting
+- Heroku
+    - Used for hosting the application
+- Git
+    - Used for version control
+- Github
+    - Repository for storing code base and docs
+
+## Python Packages
+
+Details of packages:
+
+- cloudinary==1.30.0
+    - Used to store static images
+- dj-database-url==0.5.0
+    - Used to parse the DATABASE_URL connection settings
+dj-rest-auth==2.2.6
+- Django==3.2.16
+    - Main framework used to start the project
+- django-allauth==0.50.0
+    - Used for authentication
+- django-cloudinary-storage==0.3.0
+    - Used to help connect with the google cloud storage bucket
+- django-cors-headers==3.13.0
+    - Used for Cross-Origin Resource Sharing (CORS) headers to responses
+- django-filter==22.1
+    - Used to filter API results in serializers
+- djangorestframework==3.14.0
+    - Framework used to build the API endpoints
+- djangorestframework-simplejwt==5.2.2
+    - Used with django rest framework to create access tokens for authentication
+- gunicorn==20.1.0
+    - Used for deployment of WSGI applications
+- Pillow==9.4.0
+    - Imaging Libray - used for image uploading
+- psycopg2==2.9.5
+    - PostgreSQL database adapter to allow deployed application to perform crud on the postgresql db
+- PyJWT==2.6.0
+    - For creating the Python Json Web Tokens for authentication
+
+
+## Testing
+
+Unit tests in posts app
+![test](/documentation/test.png "test")
+
+The API's were tested locally during development but the core testing was done as part of the front end repos and testing to the real API's manually via form inputs and page loads.
+
+### Validator Results
+
+All folders were run through flake8. Several issues appeared with various reasons, lines too long, blank spaces, indentation and docstrings.
+
+All issues were resolved with the exception of lines too long in migration files (these are auto generated so I did not fix) and the auth validator lines in the settings.py which seem to be unbreakable but are framework code.
+
+A warning appeared for env.py being imported but unused although this is being used in the development version, so this was ignored.
+
+## Bugs and their fixes
+
+A bug occured causing a 500 error on post and profile form submissions. It was caused by GCP not accepting dulicate file names so to remedy this, I created a function to renamed the files before uploading with a uuid.
+
+
+## Deployment
+
+### Version Control
+
+he site was created using the gitpod workspace and pushed to github.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+git add <file> - This command was used to add the file(s) to the staging area before they are committed.
+
+git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
+
+git push - This command was used to push all committed code to the remote repository on github.
+
+### Heroku Deployment
+
+The site was deployed to Heroku. The steps to deploy are as follows:
+
+- Navigate to heroku and create an account
+
+- Click the new button in the top right corner
+
+- Select create new app
+
+- Enter app name
+
+- Select region and click create app
+
+- Click the resources tab and search for Heroku Postgres
+
+- Select hobby dev and continue
+
+- Go to the settings tab and then click reveal config vars
+
+- Add the following config vars:
+
+    - SECRET_KEY: (Your secret key)
+    - DATABASE_URL: (This should already exist)
+    - ALLOWED_HOST:
+    - CLIENT_ORIGIN: url for the client front end react application that wil be making requests to these APIs
+    - CLIENT_ORIGIN_DEV: address of the local server used to preview and test UI during development of the front end client application
+    - CLOUDINARY_URL: name of the bucket to upload images to.
+
+- Click the deploy tab
+
+- Scroll down to Connect to GitHub and sign in / authorize when prompted
+
+- In the search box, find the repositoy you want to deploy and click connect
+
+- Scroll down to Manual deploy and choose the main branch
+
+- Click deploy

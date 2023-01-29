@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from jobs.models import Jobs
-from likes.models import Like
 
 
 class JobSerializer(serializers.ModelSerializer):
@@ -8,7 +7,7 @@ class JobSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    
+
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
