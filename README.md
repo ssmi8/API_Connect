@@ -279,6 +279,23 @@ git push - This command was used to push all committed code to the remote reposi
 
 The site was deployed to Heroku. The steps to deploy are as follows:
 
+#### Create new database
+
+- Log in to ElephantSQL.com to access your dashboard.  Set up an account if not already.
+- Click “Create New Instance”
+- Set up your plan
+    - Give your plan a Name (this is commonly the name of the project)
+    - Select the Tiny Turtle (Free) plan
+    - You can leave the Tags field blank
+- Select “Select Region”
+- Select a data center near you
+- Then click “Review”
+- Check your details are correct and then click “Create instance”
+- Return to the ElephantSQL dashboard and click on the database instance name for this project
+- In the URL section, click the copy icon to copy the database URL
+
+#### Heroku
+
 - Navigate to heroku and create an account
 
 - Click the new button in the top right corner
@@ -298,7 +315,7 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 - Add the following config vars:
 
     - SECRET_KEY: (Your secret key)
-    - DATABASE_URL: (This should already exist)
+    - DATABASE_URL: (Your database URL from ElephantSQL)
     - ALLOWED_HOST:
     - CLIENT_ORIGIN: url for the client front end react application that wil be making requests to these APIs
     - CLIENT_ORIGIN_DEV: address of the local server used to preview and test UI during development of the front end client application
