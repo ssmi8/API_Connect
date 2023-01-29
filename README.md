@@ -3,7 +3,17 @@ Job Connect API is the backend service used by the [Job Connect App](https://git
 
 ## Table of Contents
 
-
+- [Development Goals](#development-goals)
+- [Agile Planning](#agile-planning)
+    - [Epics](#epics)
+    - [User Stories](#user-stories)
+- [API End Points](#api-endpoints)
+- [Security](#security)
+- [Technologies used](#technologies-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+    - [Version Conrol](#version-control)
+    - [Heroku Deployment](#heroku-deployment)
 
 ## Development Goals
 
@@ -66,7 +76,7 @@ This Epic covers all API endpoint creation and database connections relating to 
 
 User Story:
 
-As a developer, I need to create the base project set up so that I can build out the features.
+- As a developer, I need to create the base project set up so that I can build out the features.
 
 Implementation:
 
@@ -76,15 +86,15 @@ The settings were also edited to hide any secret variables and set dev and produ
 
 User Story:
 
-As a developer, I need to create the google cloud bucket and create the connection to the project so that static images can be uploaded by users.
+- As a developer, I need to create a cloudinary account and create the connection to the project so that static images can be uploaded by users.
 
 Implementation:
 
-A google cloud bucket was created and a service account created to allow image uploads via the service account. Create and read IAM roles were givent to the service account to ensure it had only the minimum required permissions.
+A cloudinary account was used  and a service account created to allow image uploads via the service account.
 
 User Story:
 
-As a user I can create a new account so that I can access all the features for signed up users
+- As a user I can create a new account so that I can access all the features for signed up users
 
 Implementation:
 
@@ -92,47 +102,47 @@ Django rest framework and dj_rest_auth were installed and added to the url patte
 
 User Story:
 
-As a developer, I want to create api views for artists so that they are available to the front end
+- As a developer, I want to create a job model and API view so that users can create job postings
 
 Implementation:
 
-Endpoint: /artists/
+Endpoint: /jobs/
 
 Methods:
 
-POST - Used to create an artist
-GET - Used to retrieve a list of artists
-Endpoint: /artists/int:pk/
+POST - Used to create job post
+GET - Used to get a list of job postings
+Endpoint: /jobs/int:pk/
 
 Methods:
 
-GET - Used to view single artist profile
-PUT - Used to update an artist profile
-DELETE - Used to delete an artist profile
-User Story:
+GET - Get a single job request
+PUT - Used to update a single job request
+DELETE - Used to delete a job request
 
-As a developer, I want to create a contact model and API view so that users can contact the site owner with issues
+- As a developer, I want to create a skill model and API view so that users can create skill postings
 
 Implementation:
 
-Endpoint: /contacts/
+Endpoint: /skills/
 
 Methods:
 
-POST - Used to create contact request
-GET - Used to get a list of contact requests
-Endpoint: /contacts/int:pk/
+POST - Used to create skill post
+GET - Used to get a list of skill postings
+Endpoint: /skills/int:pk/
 
 Methods:
 
-GET - Get a single contact request
-PUT - Used to update a single contact request
-DELETE - Used to delete a contact request
+GET - Get a single skill request
+PUT - Used to update a single skill request
+DELETE - Used to delete a skill request
+
 User Story:
 
-As a user, I want to be able to view edit or delete a post
+- As a user, I want to be able to view edit or delete a post
 
-As a user, I want to able to create a post and list posts
+- As a user, I want to able to create a post and list posts
 
 Implementation:
 
@@ -151,7 +161,7 @@ PUT - Used to update a single post
 DELETE - Used to delete a post
 User Story:
 
-As a developer, I want to create a new blank profile with default image when a user is created.
+- As a developer, I want to create a new blank profile with default image when a user is created.
 
 Implementation:
 
@@ -159,7 +169,7 @@ In the profiles app, a signal was created in order to create a new user profile 
 
 User Story:
 
-As a user, I want to able to get a list of profiles
+- As a user, I want to able to get a list of profiles
 
 Implementation:
 
@@ -245,10 +255,11 @@ All issues were resolved with the exception of lines too long in migration files
 
 A warning appeared for env.py being imported but unused although this is being used in the development version, so this was ignored.
 
+![flake8](/documentation/flake8.png "flake8")
+
 ## Bugs and their fixes
 
-A bug occured causing a 500 error on post and profile form submissions. It was caused by GCP not accepting dulicate file names so to remedy this, I created a function to renamed the files before uploading with a uuid.
-
+A bug occured causing which would not allow me to access the JobsList but after a call with tutor support, I have not define the JobsList correctly, which was then corrected.
 
 ## Deployment
 
